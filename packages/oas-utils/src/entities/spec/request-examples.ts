@@ -127,31 +127,45 @@ const contentMapping: Record<BodyEncoding, BodyMime> = {
   edn: 'application/edn',
 } as const
 
+const formDataSchema = z.object({
+  activeBody: z.literal('formData'),
+  formData: z.object({
+    encoding: z
+      .union([z.literal('form-data'), z.literal('urlencoded')])
+      .default('form-data'),
+    value: requestExampleParametersSchema.array().default([]),
+  }),
+  raw: z.undefined(),
+  binary: z.undefined(),
+})
+
+const binarySchema = z.object({
+  activeBody: z.literal('binary'),
+  binary: z.instanceof(Blob),
+  raw: z.undefined(),
+  formData: z.undefined(),
+})
+
+const rawSchema = z.object({
+  activeBody: z.literal('raw'),
+  raw: z.object({
+    encoding: z.enum(exampleRequestBodyEncoding).default('json'),
+    value: z.string().default(''),
+  }),
+  formData: z.undefined(),
+  binary: z.undefined(),
+})
+
 /**
  * TODO: Migrate away from this layout to the format used in the extension
  *
  * If a user changes the encoding of the body we expect the content to change as well
  */
-export const exampleRequestBodySchema = z.object({
-  raw: z
-    .object({
-      encoding: z.enum(exampleRequestBodyEncoding).default('json'),
-      value: z.string().default(''),
-    })
-    .optional(),
-  formData: z
-    .object({
-      encoding: z
-        .union([z.literal('form-data'), z.literal('urlencoded')])
-        .default('form-data'),
-      value: requestExampleParametersSchema.array().default([]),
-    })
-    .optional(),
-  binary: z.instanceof(Blob).optional(),
-  activeBody: z
-    .union([z.literal('raw'), z.literal('formData'), z.literal('binary')])
-    .default('raw'),
-})
+export const exampleRequestBodySchema = z.union([
+  rawSchema,
+  formDataSchema,
+  binarySchema,
+])
 
 export type ExampleRequestBody = z.infer<typeof exampleRequestBodySchema>
 
@@ -178,7 +192,7 @@ export const requestExampleSchema = z.object({
   type: z.literal('requestExample').optional().default('requestExample'),
   requestUid: nanoidSchema,
   name: z.string().optional().default('Name'),
-  body: exampleRequestBodySchema.optional().default({}),
+  body: exampleRequestBodySchema.optional().default(rawSchema.parse({})),
   parameters: z
     .object({
       path: requestExampleParametersSchema.array().default([]),
