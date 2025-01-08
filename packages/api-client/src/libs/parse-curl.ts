@@ -1,4 +1,7 @@
-import type { RequestMethod } from '@scalar/oas-utils/entities/spec'
+import type {
+  RequestExampleParameter,
+  RequestMethod,
+} from '@scalar/oas-utils/entities/spec'
 import { parse as shellParse } from 'shell-quote'
 
 /** Parse and normalize a curl command */
@@ -16,7 +19,7 @@ export function parseCurlCommand(curlCommand: string) {
     url: string
     method?: RequestMethod
     headers?: Record<string, string>
-    body?: string
+    body?: string | RequestExampleParameter[]
     queryParameters?: Record<string, string>
     servers?: string[]
   } = { url: '' }
@@ -54,6 +57,13 @@ export function parseCurlCommand(curlCommand: string) {
       parseUrl(iterator as Iterator<string>, result)
     } else if (arg === '-H' || arg === '--header') {
       parseHeader(iterator as Iterator<string>, result)
+    } else if (arg === '-F' || arg === '--form') {
+      const resp = parseMultipartFormData(iterator.next().value)
+      if (!Array.isArray(result.body)) {
+        result.body = []
+      }
+      result.body.push(resp)
+      resp.headers
     } else if (
       arg === '--data' ||
       arg === '-d' ||
@@ -152,7 +162,7 @@ function parseQueryParameters(url: string) {
 /** Get the Content-Type header from a curl command */
 function parseContentType(arg: string, result: any) {
   const header = arg.replace(/['"]/g, '').split(/:(.+)/)
-  result.headers = result.headers || {}
+  result.headers ||= {}
 
   if (!header[0]) return
 
@@ -175,4 +185,10 @@ function parseCookie(iterator: Iterator<string>, result: any) {
   const cookie = iterator.next().value
   result.headers = result.headers || {}
   result.headers['Cookie'] = cookie
+}
+
+/** Parse multipartform data from a curl command */
+const parseMultipartFormData = (arg: string) => {
+  const [key = 'unknown', value = 'unknown'] = arg.split('=')
+  return { key, value, enabled: true }
 }
