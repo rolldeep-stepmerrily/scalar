@@ -25,9 +25,20 @@ export const oasServerVariableSchema = z.object({
   default: z.string().optional().default('default'),
   /** An optional description for the server variable. CommonMark syntax MAY be used for rich text representation. */
   description: z.string().optional(),
-}) as ZodSchema<
+})
+
+/** Extended schema for server variables */
+const extendedServerVariableSchema = z.object({
+  /** The value of the variable */
+  value: z.string().optional().default(''),
+})
+
+const serverVariableSchema = oasServerVariableSchema.merge(
+  extendedServerVariableSchema,
+) as ZodSchema<
   Omit<OpenAPIV3_1.ServerVariableObject, 'enum'> & {
     enum?: [string, ...string[]]
+    value?: string
   }
 >
 
@@ -44,7 +55,7 @@ export const oasServerSchema = z.object({
    */
   description: z.string().optional(),
   /** A map between a variable name and its value. The value is used for substitution in the server’s URL template. */
-  variables: z.record(z.string(), oasServerVariableSchema).optional(),
+  variables: z.record(z.string(), serverVariableSchema).optional(),
 }) satisfies ZodSchema<OpenAPIV3_1.ServerObject>
 
 export const serverSchema = oasServerSchema.extend({
