@@ -16,8 +16,15 @@ module.exports = {
     '@vue/eslint-config-typescript',
     'prettier',
     'plugin:storybook/recommended',
+    'plugin:local-rules/all',
   ],
-  plugins: ['@typescript-eslint', 'prettier', 'eslint-plugin-jsdoc'],
+  plugins: [
+    '@typescript-eslint',
+    'prettier',
+    'eslint-plugin-jsdoc',
+    'barrel-files',
+    'local-rules',
+  ],
   ignorePatterns: [
     '**/dist/**',
     '*.generated.ts',
@@ -82,7 +89,7 @@ module.exports = {
           'warn',
           { ignoreRestSiblings: true },
         ],
-        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/ban-ts-comment': 'warn',
         'no-loss-of-precision': 'off',
         '@typescript-eslint/no-loss-of-precision': 'error',
@@ -148,6 +155,7 @@ module.exports = {
         'jsdoc/multiline-blocks': 'warn',
         'jsdoc/no-multi-asterisks': 'warn',
         'jsdoc/no-undefined-types': 'warn',
+        'barrel-files/avoid-re-export-all': 'warn',
       },
     },
     /** Vue SFC linting rules */
