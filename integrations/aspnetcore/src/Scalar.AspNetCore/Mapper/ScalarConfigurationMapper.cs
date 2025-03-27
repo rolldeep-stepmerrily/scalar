@@ -1,6 +1,6 @@
 namespace Scalar.AspNetCore;
 
-internal static class ScalarOptionsMapper
+internal static class ScalarConfigurationMapper
 {
     private const string DocumentName = "{documentName}";
 
@@ -27,7 +27,7 @@ internal static class ScalarOptionsMapper
         { ScalarTarget.Dart, [ScalarClient.Http] }
     };
 
-    internal static ScalarConfiguration ToScalarConfiguration(this ScalarOptions options)
+    internal static ScalarConfiguration ToScalarConfiguration(this ScalarApiReferenceOptions options)
     {
         var sources = GetSources(options);
         return new ScalarConfiguration
@@ -64,8 +64,10 @@ internal static class ScalarOptionsMapper
             BaseServerUrl = options.BaseServerUrl
         };
     }
+    
+    internal static IEnumerable<ScalarConfiguration> ToScalarConfigurations(this IEnumerable<ScalarApiReferenceOptions> options) => options.Select(ToScalarConfiguration);
 
-    private static IEnumerable<ScalarSource> GetSources(ScalarOptions options)
+    private static IEnumerable<ScalarSource> GetSources(ScalarApiReferenceOptions options)
     {
         var trimmedOpenApiRoutePattern = options.OpenApiRoutePattern.TrimStart('/');
         return options.Documents.Select(document =>
@@ -79,7 +81,7 @@ internal static class ScalarOptionsMapper
         });
     }
 
-    private static Dictionary<string, IEnumerable<string>>? GetHiddenClients(ScalarOptions options)
+    private static Dictionary<string, IEnumerable<string>>? GetHiddenClients(ScalarApiReferenceOptions options)
     {
         var targets = ProcessOptions(options);
 
@@ -89,7 +91,7 @@ internal static class ScalarOptionsMapper
         );
     }
 
-    private static Dictionary<ScalarTarget, ScalarClient[]>? ProcessOptions(ScalarOptions options)
+    private static Dictionary<ScalarTarget, ScalarClient[]>? ProcessOptions(ScalarApiReferenceOptions options)
     {
         if (options.EnabledTargets.Length == 0 && options.EnabledClients.Length == 0)
         {
