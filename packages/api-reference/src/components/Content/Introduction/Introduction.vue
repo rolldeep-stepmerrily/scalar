@@ -4,6 +4,7 @@ import type { Spec } from '@scalar/types/legacy'
 import GitHubSlugger from 'github-slugger'
 import { computed, onMounted } from 'vue'
 
+import { Lazy } from '@/components/Content/Lazy'
 import { SpecificationExtension } from '@/components/SpecificationExtension'
 import { useConfig } from '@/hooks/useConfig'
 import { useNavState } from '@/hooks/useNavState'
@@ -29,7 +30,7 @@ const props = defineProps<{
   parsedSpec: Spec
 }>()
 
-const { getHeadingId } = useNavState()
+const { getHeadingId, hash } = useNavState()
 
 /**
  * Get the OpenAPI/Swagger specification version from the API definition.
@@ -64,47 +65,49 @@ const config = useConfig()
 onMounted(() => config.value.onLoaded?.())
 </script>
 <template>
-  <SectionContainer>
-    <!-- If the #after slot is used, we need to add a gap to the section. -->
-    <Section
-      class="introduction-section gap-12"
-      :id="
-        getHeadingId({
-          slug: DEFAULT_INTRODUCTION_SLUG,
-          depth: 1,
-          value: 'Introduction',
-        })
-      ">
-      <SectionContent
-        :loading="config.isLoading ?? (!info?.description && !info?.title)">
-        <div class="flex gap-1">
-          <Badge v-if="version">{{ version }}</Badge>
-          <Badge v-if="oasVersion">OAS {{ oasVersion }}</Badge>
-        </div>
-        <SectionHeader
-          :loading="!info.title"
-          tight>
-          <SectionHeaderTag :level="1">
-            {{ info.title }}
-          </SectionHeaderTag>
-        </SectionHeader>
-        <SectionColumns>
-          <SectionColumn>
-            <DownloadLink :filename="filenameFromTitle" />
-            <Description :value="info.description" />
-          </SectionColumn>
-          <SectionColumn v-if="$slots.aside">
-            <div class="sticky-cards">
-              <slot name="aside" />
-            </div>
-          </SectionColumn>
-        </SectionColumns>
-        <SpecificationExtension :value="parsedSpec" />
-        <SpecificationExtension :value="info" />
-      </SectionContent>
-      <slot name="after" />
-    </Section>
-  </SectionContainer>
+  <Lazy :isLazy="Boolean(hash)">
+    <SectionContainer>
+      <!-- If the #after slot is used, we need to add a gap to the section. -->
+      <Section
+        class="introduction-section gap-12"
+        :id="
+          getHeadingId({
+            slug: DEFAULT_INTRODUCTION_SLUG,
+            depth: 1,
+            value: 'Introduction',
+          })
+        ">
+        <SectionContent
+          :loading="config.isLoading ?? (!info?.description && !info?.title)">
+          <div class="flex gap-1">
+            <Badge v-if="version">{{ version }}</Badge>
+            <Badge v-if="oasVersion">OAS {{ oasVersion }}</Badge>
+          </div>
+          <SectionHeader
+            :loading="!info.title"
+            tight>
+            <SectionHeaderTag :level="1">
+              {{ info.title }}
+            </SectionHeaderTag>
+          </SectionHeader>
+          <SectionColumns>
+            <SectionColumn>
+              <DownloadLink :filename="filenameFromTitle" />
+              <Description :value="info.description" />
+            </SectionColumn>
+            <SectionColumn v-if="$slots.aside">
+              <div class="sticky-cards">
+                <slot name="aside" />
+              </div>
+            </SectionColumn>
+          </SectionColumns>
+          <SpecificationExtension :value="parsedSpec" />
+          <SpecificationExtension :value="info" />
+        </SectionContent>
+        <slot name="after" />
+      </Section>
+    </SectionContainer>
+  </Lazy>
 </template>
 <style scoped>
 .sticky-cards {
