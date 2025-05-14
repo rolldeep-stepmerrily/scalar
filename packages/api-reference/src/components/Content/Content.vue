@@ -81,7 +81,7 @@ const introCardsSlot = computed(() =>
     <div class="section-flare-item"></div>
     <div class="section-flare-item"></div>
   </div>
-  <div class="narrow-references-container">
+  <div class="narrow-references-container bg-red">
     <slot name="start" />
     <Loading
       v-if="activeCollection"

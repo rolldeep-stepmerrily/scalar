@@ -3,9 +3,10 @@ import { autoCSSInject, createViteBuildOptions } from '@scalar/build-tooling'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vitest/config'
 import { version } from './package.json'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [tailwindcss(), vue()],
   define: {
     'process.env.NODE_ENV': '"production"',
     'process.env.SCALAR_API_REFERENCE_VERSION': `"${version}"`,

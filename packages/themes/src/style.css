@@ -1,7 +1,5 @@
-@layer scalar-base, scalar-theme;
-
 /* Import core stylesheets  */
-@import "./base/reset.css";
+/* @import "./base/reset.css"; */
 @import "./base/scrollbars.css";
 
 /* Import a copy of the base variables and default theme */
