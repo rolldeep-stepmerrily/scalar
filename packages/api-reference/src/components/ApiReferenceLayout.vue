@@ -39,12 +39,16 @@ import {
 
 import { Content } from '@/components/Content'
 import GettingStarted from '@/components/GettingStarted.vue'
-import { Sidebar } from '@/components/Sidebar'
 import { ApiClientModal } from '@/features/ApiClientModal'
+import {
+  createSidebar,
+  Sidebar,
+  SIDEBAR_SYMBOL,
+  useSidebar,
+} from '@/features/Sidebar'
 import { sleep } from '@/helpers/sleep'
 import { CONFIGURATION_SYMBOL } from '@/hooks/useConfig'
 import { useNavState } from '@/hooks/useNavState'
-import { useSidebar } from '@/hooks/useSidebar'
 import { downloadDocument, downloadEventBus } from '@/libs/download'
 import { createPluginManager, PLUGIN_MANAGER_SYMBOL } from '@/plugins'
 import { useHttpClientStore } from '@/stores/useHttpClientStore'
@@ -92,6 +96,7 @@ useResizeObserver(documentEl, (entries) => {
 // Check for Obtrusive Scrollbars
 const obtrusiveScrollbars = computed(hasObtrusiveScrollbars)
 
+console.log('CREAATE SIDEBAR')
 const {
   breadcrumb,
   collapsedSidebarItems,
@@ -101,7 +106,27 @@ const {
   defaultOpenAllTags,
   setParsedSpec,
   scrollToOperation,
-} = useSidebar()
+} = useSidebar({
+  content: {
+    openapi: '3.1.1',
+    info: {
+      title: 'API Reference',
+      version: '1.0.0',
+    },
+    paths: {
+      '/': {
+        get: {
+          summary: 'Get the root',
+          responses: {
+            '200': { description: 'OK' },
+          },
+        },
+      },
+    },
+    components: {},
+    tags: [],
+  },
+})
 
 const {
   getReferenceId,
@@ -203,9 +228,6 @@ const referenceSlotProps = computed<ReferenceSlotProps>(() => ({
 onUnmounted(() => {
   downloadEventBus.reset()
 })
-
-// Keep the parsed spec up to date
-watch(() => props.parsedSpec, setParsedSpec, { deep: true })
 
 // Initialize the server state
 onServerPrefetch(() => {
@@ -326,6 +348,7 @@ const themeStyleTag = computed(
 )
 </script>
 <template>
+  FOOBAR: {{ rawSpec }}
   <div v-html="themeStyleTag" />
   <div
     ref="documentEl"
