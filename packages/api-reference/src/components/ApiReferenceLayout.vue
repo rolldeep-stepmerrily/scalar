@@ -58,6 +58,8 @@ import type {
   ReferenceSlotProps,
 } from '@/types'
 
+console.log('API REFERENCE LAYOUT')
+
 const props = defineProps<Omit<ReferenceLayoutProps, 'isDark'>>()
 
 defineEmits<{
@@ -96,7 +98,7 @@ useResizeObserver(documentEl, (entries) => {
 // Check for Obtrusive Scrollbars
 const obtrusiveScrollbars = computed(hasObtrusiveScrollbars)
 
-console.log('CREAATE SIDEBAR')
+console.log('CREATE SIDEBAR')
 const {
   breadcrumb,
   collapsedSidebarItems,
@@ -107,6 +109,7 @@ const {
   setParsedSpec,
   scrollToOperation,
 } = useSidebar({
+  // TODO: Use dereferenced document instead
   content: {
     openapi: '3.1.1',
     info: {
@@ -126,6 +129,9 @@ const {
     components: {},
     tags: [],
   },
+  // TODO: Add those
+  // tagSort: props.tagSort,
+  // operationSort: props.operationSort,
 })
 
 const {
