@@ -42,6 +42,7 @@
       "types": "./dist/tailwind.d.ts",
       "default": "./dist/tailwind.js"
     },
+    "./tailwind.css": "./dist/tailwind.css",
     "./style.css": "./dist/style.css",
     "./fonts.css": "./dist/fonts/fonts.css"
   },

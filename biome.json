@@ -222,6 +222,15 @@
           }
         }
       }
+    },
+    {
+      "include": ["**/*.css"],
+      "formatter": {
+        "enabled": false
+      },
+      "linter": {
+        "enabled": false
+      }
     }
   ]
 }

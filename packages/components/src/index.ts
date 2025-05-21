@@ -1,4 +1,4 @@
-import './tailwind/tailwind.css'
+import './tailwind.css'
 
 export * from './components/ScalarButton'
 export * from './components/ScalarCodeBlock'

@@ -2,6 +2,8 @@ import { createViteBuildOptions } from '@scalar/build-tooling'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+
+import tailwindcss from '@tailwindcss/vite'
 import svgLoader from 'vite-svg-loader'
 import { configDefaults } from 'vitest/config'
 
@@ -9,6 +11,7 @@ import { configDefaults } from 'vitest/config'
 export default defineConfig({
   plugins: [
     vue(),
+    tailwindcss(),
     // Ensure the viewBox is preserved
     svgLoader({
       svgoConfig: {
