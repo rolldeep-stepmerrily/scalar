@@ -30,10 +30,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[css]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "explicit"
-    }
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome",
@@ -68,8 +65,7 @@
   "cSpell.enabledFileTypes": {
     "*": true
   },
-  "html-css-class-completion.CSSLanguages": ["css"],
-  "cssPeek.peekToExclude": ["**/node_modules/**", "**/bower_components/**", "**/dist/**"],
+  "css.customData": [".vscode/tailwind.json"],
   "git.pullTags": false,
   "vue.complete.casing.props": "camel",
   "vue.complete.casing.tags": "pascal",

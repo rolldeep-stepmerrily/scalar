@@ -31,7 +31,8 @@
       "**/.next/**",
       "**/aspnetcore/**/obj/**",
       "**/aspnetcore/**/bin/**",
-      "packages/openapi-parser/src/schemas/**/*.ts"
+      "packages/openapi-parser/src/schemas/**/*.ts",
+      "**/*.css"
     ]
   },
   "organizeImports": {
@@ -221,15 +222,6 @@
             "noReExportAll": "error"
           }
         }
-      }
-    },
-    {
-      "include": ["**/*.css"],
-      "formatter": {
-        "enabled": false
-      },
-      "linter": {
-        "enabled": false
       }
     }
   ]
