@@ -64,14 +64,14 @@ function handleHistoryClick(requestHistoryItem: RequestEvent) {
         #floating="{ width }">
         <!-- History Item -->
         <MenuItems
-          class="custom-scroll p-0.75 grid max-h-[inherit] grid-cols-[44px,1fr,repeat(3,auto)] items-center border-t"
+          class="custom-scroll grid max-h-[inherit] grid-cols-[44px,1fr,repeat(3,auto)] items-center border-t p-0.75"
           static
           :style="{ width }">
           <MenuItem
             v-for="(entry, index) in history"
             :key="entry.timestamp"
             as="button"
-            class="font-code *:ui-active:bg-b-2 text-c-2 contents text-sm font-medium *:flex *:h-8 *:cursor-pointer *:items-center *:rounded-none *:px-1.5 first:*:rounded-l last:*:rounded-r"
+            class="font-code ui-active:*:bg-b-2 text-c-2 contents text-sm font-medium *:flex *:h-8 *:cursor-pointer *:items-center *:rounded-none *:px-1.5 *:first:rounded-l *:last:rounded-r"
             :value="index"
             @click="handleHistoryClick(entry)">
             <HttpMethod
