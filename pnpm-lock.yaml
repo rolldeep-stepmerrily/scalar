@@ -1593,9 +1593,6 @@ importers:
       tailwindcss:
         specifier: catalog:*
         version: 4.1.7
-      tailwindcss-color-mix:
-        specifier: ^0.0.8
-        version: 0.0.8(tailwindcss@4.1.7)
       vite:
         specifier: catalog:*
         version: 5.4.19(@types/node@20.17.10)(lightningcss@1.30.1)(terser@5.31.2)
@@ -1674,9 +1671,6 @@ importers:
       '@phosphor-icons/core':
         specifier: ^2.1.1
         version: 2.1.1
-      '@scalar/use-hooks':
-        specifier: workspace:*
-        version: link:../use-hooks
       '@types/node':
         specifier: catalog:*
         version: 20.17.10
@@ -2236,9 +2230,6 @@ importers:
 
   packages/use-hooks:
     dependencies:
-      '@scalar/themes':
-        specifier: workspace:*
-        version: link:../themes
       '@scalar/use-toasts':
         specifier: workspace:*
         version: link:../use-toasts
