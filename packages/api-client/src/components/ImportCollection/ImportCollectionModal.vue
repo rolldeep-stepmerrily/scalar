@@ -274,7 +274,7 @@ function handleImportFinished() {
             {{ title || 'Untitled Collection' }}
           </div>
 
-          <div class="text-c-1 text-balance text-center text-sm font-medium">
+          <div class="text-c-1 text-center text-sm font-medium text-balance">
             Import the OpenAPI document to instantly send API requests. No
             signup required.
           </div>
@@ -306,7 +306,7 @@ function handleImportFinished() {
                     :disableToolTip="true" />
                 </div>
                 <div
-                  class="text-c-3 text-balance pt-0 text-center text-xs font-medium">
+                  class="text-c-3 pt-0 text-center text-xs font-medium text-balance">
                   Automatically update your API client when the OpenAPI document
                   content changes.
                 </div>
@@ -328,7 +328,7 @@ function handleImportFinished() {
                 size="xl" />
             </a>
           </div>
-          <span class="text-c-2 text-sm font-medium leading-snug">
+          <span class="text-c-2 text-sm leading-snug font-medium">
             <a
               class="hover:text-c-1 mb-1 inline-block underline-offset-2"
               href="https://scalar.com/download"
@@ -344,7 +344,7 @@ function handleImportFinished() {
   </ScalarModal>
 </template>
 <style>
-@screen md {
+@variant md {
   .has-no-import-url,
   .has-import-url {
     max-width: 100dvw;

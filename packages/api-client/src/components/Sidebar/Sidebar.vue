@@ -70,7 +70,7 @@ const startDrag = (event: MouseEvent) => {
     <div
       v-if="layout !== 'modal' && title"
       class="xl:min-h-client-header flex min-h-12 items-center justify-between px-3 py-1.5 text-sm md:px-[18px] md:py-2.5">
-      <h2 class="m-0 whitespace-nowrap text-sm font-medium">
+      <h2 class="m-0 text-sm font-medium whitespace-nowrap">
         {{ title }}
       </h2>
       <slot
@@ -99,7 +99,7 @@ const startDrag = (event: MouseEvent) => {
 .sidebar-height {
   min-height: 100%;
 }
-@screen md {
+@variant md {
   .sidebar-mask {
     mask-image: linear-gradient(
       0,

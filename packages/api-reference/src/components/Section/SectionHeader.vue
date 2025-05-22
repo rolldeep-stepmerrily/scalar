@@ -25,7 +25,7 @@ defineProps<{
   grid-template-columns: 1fr;
 }
 
-@screen xl {
+@variant xl {
   .section-header-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }

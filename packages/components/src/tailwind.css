@@ -1,42 +1,19 @@
+
+/* Tailwind Base Theme */
 @import "tailwindcss/theme.css" layer(scalar-base);
-@import "@scalar/themes/tailwind.css" layer(scalar-base);
+
+/* Scalar theme stuff */
+@import "@scalar/themes/tailwind/theme.css" layer(scalar-base);
+@import "@scalar/themes/tailwind/variants.css";
+@import "@scalar/themes/tailwind/utilities.css";
 
 /* Utilities need to exist outside a layer */
 .scalar-app {
   @import "tailwindcss/utilities.css";
 }
 
-/* Scalar client theme extensions */
+/* Scalar components theme extensions */
 @theme {
-
-  /* Sidebar Colors */
-  --color-sidebar-background-1: var(--scalar-sidebar-background-1, var(--scalar-background-1));
-  
-  --color-sidebar-1: var(--scalar-sidebar-color-1, var(--scalar-color-1));
-  --color-sidebar-2: var(--scalar-sidebar-color-2, var(--scalar-color-2));
-  
-  --color-sidebar-hover-background: var(--scalar-sidebar-item-hover-background, var(--scalar-background-2));
-  --color-sidebar-hover: var(--scalar-sidebar-item-hover-color, currentColor);
-  
-  --color-sidebar-active-background: var(--scalar-sidebar-item-active-background, var(--scalar-background-2));
-  --color-sidebar-active: var(--scalar-sidebar-color-active, currentColor);
-  
-  --color-sidebar-border: var(--scalar-sidebar-border-color, var(--scalar-border-color));
-  
-  --color-sidebar-search-background: var(--scalar-sidebar-search-background, var(--scalar-background-2));
-  --color-sidebar-search: var(--scalar-sidebar-search-color, var(--scalar-color-3));
-  --color-sidebar-search-border: var(--scalar-sidebar-search-border-color, var(--scalar-border-color));
-
-  /* Spacing */
-  --max-w-screen-xxs: 360px;
-  --max-w-screen-xs: 480px;
-  --max-w-screen-sm: 540px;
-  --max-w-screen-md: 640px;
-  --max-w-screen-lg: 800px;
-  --max-w-screen-xl: 1000px;
-  --max-w-radix-popper: calc(var(--radix-popper-available-width) - 8px);
-  --max-h-radix-popper: calc(var(--radix-popper-available-height) - 8px);
-
   /* Z-Index */
   --z-10: 10;
   --z-20: 20;
@@ -45,19 +22,15 @@
   --z-context-plus: 1001;
   --z-overlay: 10000;
   --z-tooltip: 99999;
-
 }
 
-/* Utility classes */
-
-@utility border {
-  border-width: var(--scalar-border-width);
+/* Radix Popper */
+@utility max-w-radix-popper {
+  max-width: calc(var(--radix-popper-available-width) - 8px);
 }
-
-@utility z-* {
-  z-index: --value(--z-*);
+@utility max-h-radix-popper {
+  max-height: calc(var(--radix-popper-available-height) - 8px);
 }
-
 
 /* Plugins */
 @plugin "@headlessui/tailwindcss";

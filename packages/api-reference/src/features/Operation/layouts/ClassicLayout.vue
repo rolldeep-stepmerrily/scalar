@@ -246,7 +246,7 @@ const title = computed(() => operation.summary || operation.path)
   padding: 9px;
 }
 
-@screen lg {
+@variant lg {
   .endpoint-content {
     grid-auto-flow: column;
   }

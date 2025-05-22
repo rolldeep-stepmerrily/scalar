@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
   * Allow the modal to fill more space on
   * very short (or very zoomed in) screens
   */
-@screen zoomed {
+@variant zoomed {
   .scalar .scalar-app-layout {
     height: 100%;
     max-height: 90svh;
