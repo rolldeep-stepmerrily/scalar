@@ -3,7 +3,7 @@
 /* Tailwind doesn't support z-index the way it used to so this utility
    applies the z-index's from the theme variables */
 @utility z-* {
-  z-index: --value(--z- *);
+  z-index: --value(--z-\*);
 }
 
 /* Flex utility for centering */
