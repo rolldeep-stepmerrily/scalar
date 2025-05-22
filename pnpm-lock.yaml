@@ -1056,6 +1056,9 @@ importers:
       '@scalar/galaxy':
         specifier: workspace:*
         version: link:../galaxy
+      '@tailwindcss/vite':
+        specifier: catalog:*
+        version: 4.1.7(vite@5.4.19(@types/node@22.15.3)(lightningcss@1.30.1)(terser@5.31.2))
       '@types/shell-quote':
         specifier: ^1.7.5
         version: 1.7.5
@@ -1068,21 +1071,12 @@ importers:
       '@vue/test-utils':
         specifier: ^2.4.1
         version: 2.4.6
-      autoprefixer:
-        specifier: ^10.4.19
-        version: 10.4.19(postcss@8.5.3)
       jsdom:
         specifier: ^22.1.0
         version: 22.1.0
-      postcss:
-        specifier: catalog:*
-        version: 8.5.3
       tailwindcss:
         specifier: catalog:*
         version: 4.1.7
-      tailwindcss-color-mix:
-        specifier: ^0.0.8
-        version: 0.0.8(tailwindcss@4.1.7)
       vite:
         specifier: catalog:*
         version: 5.4.19(@types/node@22.15.3)(lightningcss@1.30.1)(terser@5.31.2)
@@ -17458,11 +17452,6 @@ packages:
   tailwind-merge@2.5.5:
     resolution: {integrity: sha512-0LXunzzAZzo0tEPxV3I297ffKZPlKDrjj7NXphC8V5ak9yHC5zRmxnOe2m/Rd/7ivsOMJe3JZ2JVocoDdQTRBA==}
 
-  tailwindcss-color-mix@0.0.8:
-    resolution: {integrity: sha512-agTN7BAA9eny2WABRX6jpHciQoBoSYGkZfLM1PpHAyNBPErQKFWUm1o1HjwNsZkilJL3hhUi2+H9MoCg+HT89A==}
-    peerDependencies:
-      tailwindcss: ^3.0.0
-
   tailwindcss@4.1.7:
     resolution: {integrity: sha512-kr1o/ErIdNhTz8uzAYL7TpaUuzKIE6QPQ4qmSdxnoX/lo+5wmUHQA6h3L5yIqEImSRnAAURDirLu/BgiXGPAhg==}
 
@@ -26908,6 +26897,13 @@ snapshots:
       '@tailwindcss/oxide': 4.1.7
       tailwindcss: 4.1.7
       vite: 5.4.19(@types/node@20.17.10)(lightningcss@1.30.1)(terser@5.31.2)
+
+  '@tailwindcss/vite@4.1.7(vite@5.4.19(@types/node@22.15.3)(lightningcss@1.30.1)(terser@5.31.2))':
+    dependencies:
+      '@tailwindcss/node': 4.1.7
+      '@tailwindcss/oxide': 4.1.7
+      tailwindcss: 4.1.7
+      vite: 5.4.19(@types/node@22.15.3)(lightningcss@1.30.1)(terser@5.31.2)
 
   '@tanstack/virtual-core@3.5.1': {}
 
@@ -38882,10 +38878,6 @@ snapshots:
   tabbable@6.2.0: {}
 
   tailwind-merge@2.5.5: {}
-
-  tailwindcss-color-mix@0.0.8(tailwindcss@4.1.7):
-    dependencies:
-      tailwindcss: 4.1.7
 
   tailwindcss@4.1.7: {}
 

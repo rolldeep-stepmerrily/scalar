@@ -74,7 +74,7 @@
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   "tailwindCSS.experimental.configFile": {
-    "packages/api-client/tailwind.config.ts": "packages/api-client/**",
+    "packages/api-client/src/tailwind.css": "packages/api-client/**",
     "packages/api-reference/tailwind.config.ts": "packages/api-reference/**",
     "packages/components/src/tailwind.css": "packages/components/**"
   },

@@ -17,7 +17,7 @@ export const platformVariants = ['mac', 'windows', 'linux'] as const
 export const desktopVariants = plugin(({ addVariant }) => {
   // Add support for `desktop` modifier
   // Usage: <div class="desktop:rounded-lg">...</div>
-  addVariant('desktop', () => '.app-platform-desktop &')
+  addVariant('desktop', '.app-platform-desktop &')
 
   // Add support for `mac`, `windows` and `linux` modifiers
   // Usage: <div class="mac:hidden">...</div>

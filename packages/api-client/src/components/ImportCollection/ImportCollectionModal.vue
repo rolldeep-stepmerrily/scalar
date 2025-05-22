@@ -235,7 +235,7 @@ function handleImportFinished() {
       </div>
       <!-- Wait until the URL is fetched -->
       <div
-        class="border-1/2 m-auto flex w-full max-w-[380px] flex-col items-center rounded-xl px-8 py-8 transition-opacity"
+        class="m-auto flex w-full max-w-[380px] flex-col items-center rounded-xl border px-8 py-8 transition-opacity"
         :class="{ 'opacity-0': prefetchResult.state === 'loading' }">
         <!-- Prefetch error -->
         <!-- Or: Document doesn’t even have an OpenAPI/Swagger version, something is probably wrong -->
@@ -299,7 +299,7 @@ function handleImportFinished() {
             </div>
             <!-- Watch Mode -->
             <template v-if="prefetchResult?.url">
-              <div class="border-t-1/2 mt-5 overflow-hidden pt-4 text-sm">
+              <div class="mt-5 overflow-hidden border-t pt-4 text-sm">
                 <div class="flex items-center justify-center">
                   <WatchModeToggle
                     v-model="watchMode"
@@ -344,6 +344,8 @@ function handleImportFinished() {
   </ScalarModal>
 </template>
 <style>
+@reference "@/tailwind.css";
+
 @variant md {
   .has-no-import-url,
   .has-import-url {
