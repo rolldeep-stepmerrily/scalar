@@ -1,5 +1,15 @@
 # @scalar/api-reference
 
+## 1.29.3
+
+### Patch Changes
+
+- fbcce50: fix: moves download link to section column in introduction component
+- 0afb11d: fix: asses schemas to children object in schema property
+- 0afb11d: fix: adds model name function in schema property heading
+- Updated dependencies [fbcce50]
+  - @scalar/api-client@2.4.3
+
 ## 1.29.2
 
 ### Patch Changes

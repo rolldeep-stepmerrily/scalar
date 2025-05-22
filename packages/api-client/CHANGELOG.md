@@ -1,5 +1,11 @@
 # @scalar/api-client
 
+## 2.4.3
+
+### Patch Changes
+
+- fbcce50: fix: adds server selector x axis overflow for long content
+
 ## 2.4.2
 
 ### Patch Changes
