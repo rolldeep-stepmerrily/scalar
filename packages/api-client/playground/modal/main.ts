@@ -1,3 +1,4 @@
+import '@scalar/themes/style.css'
 import { createApiClientModal } from '@/layouts/Modal'
 
 const { open } = await createApiClientModal({

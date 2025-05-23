@@ -101,6 +101,8 @@ onBeforeUnmount(() => {
 </style>
 
 <style scoped>
+@reference "@/tailwind.css";
+
 .scalar .scalar-app-layout {
   background: var(--scalar-background-1);
   height: calc(100% - 120px);

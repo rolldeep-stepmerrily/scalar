@@ -119,7 +119,7 @@ const themeStyleTag = computed(
 <style>
 @import '@scalar/components/style.css';
 @import '@scalar/themes/style.css';
-@import '@/tailwind/tailwind.css';
+@import '@/tailwind.css';
 
 #scalar-client {
   display: flex;
