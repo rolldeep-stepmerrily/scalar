@@ -128,8 +128,6 @@
   --spacing: 4px;
 
   /* Custom Spacing */
-  --spacing-px: 1px;
-  --spacing-1\/2: 0.5px;
   --spacing-header: 48px;
   --spacing-border: var(--scalar-border-width);
 

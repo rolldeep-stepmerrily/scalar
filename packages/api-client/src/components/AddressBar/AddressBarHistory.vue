@@ -93,7 +93,7 @@ function handleHistoryClick(requestHistoryItem: RequestEvent) {
           </MenuItem>
         </MenuItems>
         <ScalarFloatingBackdrop
-          class="-top-[--scalar-address-bar-height] rounded-lg" />
+          class="-top-(--scalar-address-bar-height) rounded-lg" />
       </template>
     </ScalarFloating>
   </Menu>

@@ -309,7 +309,7 @@ const blurSearch = () => {
             {{ isSearchVisible ? 'Hide' : 'Show' }} search
           </span>
           <ScalarIcon
-            class="text-c-3 hover:bg-b-2 p-1.75 max-h-8 max-w-8 rounded-lg text-sm"
+            class="text-c-3 hover:bg-b-2 max-h-8 max-w-8 rounded-lg p-1.75 text-sm"
             icon="Search" />
         </button>
       </div>
@@ -330,7 +330,7 @@ const blurSearch = () => {
           @blur="blurSearch" />
       </div>
       <div
-        class="gap-1/2 flex flex-1 flex-col overflow-visible overflow-y-auto px-3 pb-3 pt-0"
+        class="gap-1/2 flex flex-1 flex-col overflow-visible overflow-y-auto px-3 pt-0 pb-3"
         :class="[
           {
             'pb-14': layout !== 'modal',
@@ -387,12 +387,12 @@ const blurSearch = () => {
             <template #leftIcon>
               <ScalarIcon
                 v-if="collection.info?.title === 'Drafts'"
-                class="text-sidebar-c-2 group-hover:hidden"
+                class="text-sidebar-2 group-hover:hidden"
                 icon="Scribble"
                 thickness="2.25" />
               <LibraryIcon
                 v-else
-                class="text-sidebar-c-2 size-3.5 min-w-3.5 stroke-2 group-hover:hidden"
+                class="text-sidebar-2 size-3.5 min-w-3.5 stroke-2 group-hover:hidden"
                 :src="
                   collection['x-scalar-icon'] || 'interface-content-folder'
                 " />
@@ -424,9 +424,9 @@ const blurSearch = () => {
               class="rabbitsit font-bold" />
             <ScalarAsciiArt
               :art="RabbitJump"
-              class="rabbitjump absolute left-0 top-0 font-bold" />
+              class="rabbitjump absolute top-0 left-0 font-bold" />
           </div>
-          <div class="mb-2 mt-2 text-balance text-center text-sm">
+          <div class="mt-2 mb-2 text-center text-sm text-balance">
             <b class="font-medium">Let's Get Started</b>
             <p class="mt-2">
               Create request, folder, collection or import from OpenAPI/Postman
